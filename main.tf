@@ -9,8 +9,8 @@ terraform {
 
 provider "aws" {
   # Configuration options
-  profile = "matheus"
-  region  = "us-east-2"
+  # profile = "matheus"
+  region = "us-east-2"
 }
 
 data "aws_ami" "ubuntu" {
