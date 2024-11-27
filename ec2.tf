@@ -1,5 +1,5 @@
-resource "aws_key_pair" "key" {
-  key_name   = "my-ec2-key"
+resource "aws_key_pair" "my-key" {
+  key_name   = "my-key"
   public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJDDQDN5mGTMc8/Oj4L78c8OE9kPkB69Wcg4zEsmr6j5 matheus"
 }
 
