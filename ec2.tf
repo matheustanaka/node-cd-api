@@ -24,7 +24,7 @@ resource "aws_instance" "my_ec2" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = "t3.micro"
   key_name                    = aws_key_pair.key.key_name
-  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  vpc_security_group_ids      = [aws_security_group.allow_ssh.id, aws_security_group.allow_app_port.id]
   subnet_id                   = aws_subnet.subnet_ec2_public_az_a.id
   associate_public_ip_address = true
   user_data_replace_on_change = true
@@ -132,6 +132,31 @@ resource "aws_security_group" "allow_ssh" {
     description = "SSH from anywhere"
     from_port   = 22
     to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    IAC = "True"
+  }
+}
+
+resource "aws_security_group" "allow_app_port" {
+  name        = "allow_app_port_${terraform.workspace}"
+  description = "Allow app port inbound traffic"
+  vpc_id      = aws_vpc.vpc_ec2.id
+
+  ingress {
+    description = "Allow port 3000 to access the application"
+    from_port   = 3000
+    to_port     = 3000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
