@@ -58,6 +58,12 @@ echo "Adicionando o usuário 'ubuntu' ao grupo 'docker'..."
 sudo usermod -aG docker ubuntu
 newgrp docker
 
+echo "Instalando AWS CLI"
+sudo apt install unzip -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
 echo "Finalizando script."
 EOF
 
