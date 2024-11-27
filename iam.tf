@@ -110,8 +110,8 @@ resource "aws_iam_role_policy" "ec2-role-policy" {
 }
 
 # Define o Instace profile para rodar com a pipeline
-resource "aws_iam_instance_profile" "ec2-iam-instance-profile" {
-  name = "ec2-instance-profile"
+resource "aws_iam_instance_profile" "ec2-iam-instance-profile-test" {
+  name = "ec2-iam-instance-profile-test"
   role = aws_iam_role.ec2-role.name
 }
 
