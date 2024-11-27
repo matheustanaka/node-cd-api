@@ -5,6 +5,13 @@ terraform {
       version = "5.77.0"
     }
   }
+  backend "s3" {
+    bucket = "server-infra-backup"
+    key    = "state/terraform.tfstate"
+    region = "us-east-2"
+    # profile = "matheus"
+  }
+
 }
 
 provider "aws" {
