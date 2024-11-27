@@ -16,7 +16,7 @@ resource "aws_iam_role" "ecr-role" {
               "sts.amazonaws.com"
             ],
             "token.actions.githubusercontent.com:sub" : [
-              "repo:matheustanaka/ci-cd-pipeline:ref:refs/heads/main"
+              "repo:matheustanaka/node-ci-api:ref:refs/heads/main"
             ]
           }
         }
