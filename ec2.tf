@@ -28,7 +28,7 @@ resource "aws_instance" "my_ec2" {
   subnet_id                   = aws_subnet.subnet_ec2_public_az_a.id
   associate_public_ip_address = true
   user_data_replace_on_change = true
-  iam_instance_profile        = aws_iam_instance_profile.ec2-iam-instance-profile-test.name
+  iam_instance_profile        = aws_iam_instance_profile.ec2-instance-profile-test.name
   user_data                   = <<EOF
 #!/bin/bash
 exec > /var/log/user_data.log 2>&1
